@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Original Images";
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/home.js")"></script>
+}
+<h2 class="page-header">Original Images</h2>
+<div class="row">
+    @foreach (var img in ViewBag.IMGS)
+    {
+    <div class="col-md-6 portfolio-item">
+        <div class="card h-100">
+            <a href="@Url.Content(Path.Combine("~/Original", img.FileName))">
+                <img class="card-img-top" src="@Url.Content(Path.Combine("~/Original", img.FileName))" alt="@img.FileName" width="100%" height="300px">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="@Url.Content(Path.Combine("~/Original", img.FileName))">File name: @img.FileName</a>
+                </h4>
+                <p class="card-text">File size: @img.FileSize</p>
+                <p class="card-text">Last Modified: @img.DateModified.ToString()</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>
